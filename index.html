@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///Users/lucymccomas/Downloads/portfolio_website.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 3px solid transparent;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
+            border-bottom: 3px solid;
+            padding-bottom: 10px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: background 0.3s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .project-tech {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+<style>
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        </style></head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">YN</div>
+            <h1>Your Name</h1>
+            <p class="subtitle">Sales Professional &amp; Business Development</p>
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com" class="contact-item">
+                    📧 your.email@example.com
+                </a>
+                <a href="tel:+1234567890" class="contact-item">
+                    📞 (123) 456-7890
+                </a>
+                <a href="https://linkedin.com/in/yourname" class="contact-item">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/yourname" class="contact-item">
+                    🔗 GitHub
+                </a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <section class="section">
+                <h2>About Me</h2>
+                <p>I'm a results-driven sales professional with a proven track record of exceeding targets and building lasting client relationships. I specialize in consultative selling, identifying customer needs, and delivering solutions that drive business growth. My approach combines strategic thinking with genuine relationship-building to create win-win outcomes.</p>
+                <br>
+                <p>I thrive in competitive environments and believe that understanding your customer's challenges is the key to successful sales. When I'm not closing deals, you can find me networking at industry events, mentoring new sales reps, or exploring new market opportunities.</p>
+            </section>
+
+            <section class="section">
+                <h2>Skills</h2>
+                <div class="skill-grid">
+                    <div class="skill-item">Lead Generation</div>
+                    <div class="skill-item">CRM Management</div>
+                    <div class="skill-item">Negotiation</div>
+                    <div class="skill-item">Salesforce</div>
+                    <div class="skill-item">Cold Calling</div>
+                    <div class="skill-item">Account Management</div>
+                    <div class="skill-item">Presentation</div>
+                    <div class="skill-item">Market Analysis</div>
+                </div>
+            </section>
+
+            <section class="section full-width">
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <div class="job-title">Senior Sales Representative</div>
+                    <div class="company">Global Solutions Corp.</div>
+                    <div class="date">January 2023 - Present</div>
+                    <p>Consistently exceed quarterly sales targets by 125% while managing a portfolio of 50+ enterprise accounts. Lead product demonstrations, negotiate complex contracts, and collaborate with cross-functional teams to ensure customer success.</p>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-title">Account Executive</div>
+                    <div class="company">TechSales Inc.</div>
+                    <div class="date">June 2021 - December 2022</div>
+                    <p>Generated $2.5M in new business revenue through strategic prospecting and relationship building. Developed and executed territory plans, conducted needs assessments, and maintained 95% customer retention rate.</p>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-title">Inside Sales Representative</div>
+                    <div class="company">StartUp Dynamics</div>
+                    <div class="date">Summer 2020 - May 2021</div>
+                    <p>Built pipeline through cold calling and email campaigns, achieving 150% of lead generation targets. Supported senior sales team with research, proposal preparation, and customer onboarding processes.</p>
+                </div>
+            </section>
+
+            <section class="section full-width">
+                <h2>Projects</h2>
+                <div class="project-item">
+                    <div class="project-title">Enterprise Software Implementation</div>
+                    <p>Led the successful sale and implementation of a $500K CRM solution for a Fortune 500 client. Coordinated with technical teams, managed stakeholder expectations, and ensured seamless rollout across 15 departments.</p>
+                    <div>
+                        <span class="project-tech">Salesforce</span>
+                        <span class="project-tech">Project Management</span>
+                        <span class="project-tech">Stakeholder Management</span>
+                        <span class="project-tech">Training &amp; Support</span>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Market Expansion Initiative</div>
+                    <p>Spearheaded entry into new vertical market, conducting competitive analysis and customer research. Developed go-to-market strategy that resulted in 40% increase in regional sales within first year.</p>
+                    <div>
+                        <span class="project-tech">Market Research</span>
+                        <span class="project-tech">Competitive Analysis</span>
+                        <span class="project-tech">Strategy Development</span>
+                        <span class="project-tech">Territory Planning</span>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Sales Process Optimization</div>
+                    <p>Designed and implemented new sales methodology that reduced average sales cycle by 30% and increased conversion rates by 25%. Created training materials and onboarded team of 12 sales representatives.</p>
+                    <div>
+                        <span class="project-tech">Process Improvement</span>
+                        <span class="project-tech">Training Development</span>
+                        <span class="project-tech">Performance Analytics</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effect to skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Add click animation to contact items
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        background: rgba(102, 126, 234, 0.3);
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body></html>
